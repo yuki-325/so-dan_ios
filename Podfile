@@ -6,6 +6,10 @@ target 'so-dan_app' do
   use_frameworks!
 
   # Pods for so-dan_app
+  pod 'MaterialComponents/TextControls+FilledTextAreas'
+  pod 'MaterialComponents/TextControls+FilledTextFields'
+  pod 'MaterialComponents/TextControls+OutlinedTextAreas'
+  pod 'MaterialComponents/TextControls+OutlinedTextFields'
 
   target 'so-dan_appTests' do
     inherit! :search_paths
