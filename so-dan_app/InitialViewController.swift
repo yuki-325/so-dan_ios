@@ -14,13 +14,9 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signupBtn.layer.borderWidth = 1
-        signupBtn.layer.borderColor = UIColor.rgb(red: 53, green: 53, blue: 53).cgColor
+        signupBtn.layer.borderColor = UIColor.init(red: 66, green: 66, blue: 66, alpha: 1).cgColor
         signupBtn.layer.cornerRadius = signupBtn.frame.height / 2
         loginBtn.layer.cornerRadius = loginBtn.frame.height / 2
-        
-        
     }
-
-
 }
 

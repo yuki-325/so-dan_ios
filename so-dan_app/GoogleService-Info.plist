@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>545436559380-pcuq8gcthojpbh6sicjigjih6k4n995s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.545436559380-pcuq8gcthojpbh6sicjigjih6k4n995s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUE3V4Cwxv_VIFYeMlXZFLi-dvbJ7yxgM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>545436559380</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Sakeikura.so-dan-app</string>
+	<key>PROJECT_ID</key>
+	<string>sodan-ios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sodan-ios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:545436559380:ios:b0f8e8e5daee3f99225f01</string>
+	<key>DATABASE_URL</key>
+	<string>https://sodan-ios.firebaseio.com</string>
+</dict>
+</plist>
