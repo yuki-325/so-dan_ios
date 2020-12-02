@@ -18,6 +18,7 @@
 		4F4A479825655B0C00F346E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A479725655B0C00F346E5 /* SignupViewController.swift */; };
 		4F4A479D25655B4100F346E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A479C25655B4100F346E5 /* LoginViewController.swift */; };
 		4F64238E256B56CE00DD80DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */; };
+		4FCEFA632577B576007E0827 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA622577B576007E0827 /* UserModel.swift */; };
 		7D2998740918F94514A0A367 /* Pods_so_dan_app_so_dan_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EEFCA59FD17F9E418D593C /* Pods_so_dan_app_so_dan_appUITests.framework */; };
 		7E818DEF13A9C692A4EDAD34 /* Pods_so_dan_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9CFB2AC86E2318FC9D1FE7 /* Pods_so_dan_app.framework */; };
 		9E01C3A38AACA173E22DFED1 /* Pods_so_dan_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5862946821859AEBD92A00D8 /* Pods_so_dan_appTests.framework */; };
@@ -61,6 +62,7 @@
 		4F4A479725655B0C00F346E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4F4A479C25655B4100F346E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4FCEFA622577B576007E0827 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5862946821859AEBD92A00D8 /* Pods_so_dan_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_so_dan_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6366CB97BE5A63274DFDFC04 /* Pods-so-dan_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-so-dan_appTests.debug.xcconfig"; path = "Target Support Files/Pods-so-dan_appTests/Pods-so-dan_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		83EEFCA59FD17F9E418D593C /* Pods_so_dan_app_so_dan_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_so_dan_app_so_dan_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 			children = (
 				4F4A473125653D1B00F346E5 /* AppDelegate.swift */,
 				4F4A473325653D1B00F346E5 /* SceneDelegate.swift */,
+				4FCEFA622577B576007E0827 /* UserModel.swift */,
 				4F4A473525653D1B00F346E5 /* InitialViewController.swift */,
 				4F4A479725655B0C00F346E5 /* SignupViewController.swift */,
 				4F4A479C25655B4100F346E5 /* LoginViewController.swift */,
@@ -420,6 +423,7 @@
 				4F4A479825655B0C00F346E5 /* SignupViewController.swift in Sources */,
 				4F4A473625653D1B00F346E5 /* InitialViewController.swift in Sources */,
 				4F4A473225653D1B00F346E5 /* AppDelegate.swift in Sources */,
+				4FCEFA632577B576007E0827 /* UserModel.swift in Sources */,
 				4F4A473425653D1B00F346E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

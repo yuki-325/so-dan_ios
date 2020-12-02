@@ -98,6 +98,8 @@ extension LoginViewController {
     }
 }
 
+
+//MARK: - ログインの処理
 extension LoginViewController {
     func loginAction() {
         guard let email = emailTextField.text else { return }
@@ -106,7 +108,10 @@ extension LoginViewController {
             if let _error = error {
                 print(_error.localizedDescription)
             }
+        
+            let user = Auth.auth().currentUser
             
+            print(user?.email)
             //print(result?.user.email)
         }
     }

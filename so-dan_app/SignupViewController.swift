@@ -134,12 +134,24 @@ extension SignupViewController {
             
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let docData = ["email": email, "username": username, "creatAt": Timestamp()] as [String: Any]
+            let userRef = Firestore.firestore().collection("users").document(uid)
             
-            Firestore.firestore().collection("users").document(uid).setData(docData) { (error) in
+            userRef.setData(docData) { (error) in
                 if let _error = error {
                     print(_error.localizedDescription)
                     self.alert(title: "エラー", message: "データベースの保存に失敗しました。")
                     return
+                }
+                
+                userRef.getDocument { (snapShoe, error) in
+                    if let _error = error {
+                        print(_error.localizedDescription)
+                        self.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。")
+                        return
+                    }
+                    
+                    let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ
+                    
                 }
                 self.alert(title: "登録完了", message: "アカウントの作成が完了しました。")
             }
