@@ -30,11 +30,6 @@ class SignupViewController: UIViewController{
         passwordTextField.clearButtonMode = .whileEditing
         usernameTextField.clearButtonMode = .whileEditing
 
-
-//        emailTextField.trailingAssistiveLabel.text = "aaaa"
-//        emailTextField.setTrailingAssistiveLabelColor(UIColor.red, for: .normal)
-        
-        
         signupBtn.layer.cornerRadius = signupBtn.frame.height / 2
         signupBtn.isEnabled = false
         
@@ -56,10 +51,10 @@ extension SignupViewController: UITextFieldDelegate {
         
         if !emailIsEmpty && !passwordIsEmpty && !usernameIsEmpty {
             signupBtn.isEnabled = true
-            signupBtn.backgroundColor = UIColor.init(red: 66, green: 66, blue: 66, alpha: 1)
+            signupBtn.backgroundColor = UIColor.rgba(red: 66, green: 66, blue: 66, alpha: 1)
         } else {
             signupBtn.isEnabled = false
-            signupBtn.backgroundColor = UIColor.init(red: 145, green: 145, blue: 145, alpha: 1)
+            signupBtn.backgroundColor = UIColor.rgba(red: 145, green: 145, blue: 145, alpha: 1)
         }
     }
     
@@ -133,7 +128,7 @@ extension SignupViewController {
             }
             
             guard let uid = Auth.auth().currentUser?.uid else { return }
-            let docData = ["email": email, "username": username, "creatAt": Timestamp()] as [String: Any]
+            let docData = ["email": email, "username": username, "createdAt": Timestamp()] as [String: Any]
             let userRef = Firestore.firestore().collection("users").document(uid)
             
             userRef.setData(docData) { (error) in
@@ -151,6 +146,7 @@ extension SignupViewController {
                     }
                     
                     let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ
+                    print(userData.email)
                     
                 }
                 self.alert(title: "登録完了", message: "アカウントの作成が完了しました。")

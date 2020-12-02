@@ -45,10 +45,10 @@ extension LoginViewController: UITextFieldDelegate {
         
         if !emailIsEmpty && !passwordIsEmpty {
             loginBtn.isEnabled = true
-            loginBtn.backgroundColor = UIColor.init(red: 66, green: 66, blue: 66, alpha: 1)
+            loginBtn.backgroundColor = UIColor.rgba(red: 66, green: 66, blue: 66, alpha: 1)
         } else {
             loginBtn.isEnabled = false
-            loginBtn.backgroundColor = UIColor.init(red: 145, green: 145, blue: 145, alpha: 1)
+            loginBtn.backgroundColor = UIColor.rgba(red: 145, green: 145, blue: 145, alpha: 1)
         }
     }
     

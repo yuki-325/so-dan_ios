@@ -30,8 +30,8 @@
             filePath = "so-dan_app/SignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "textFieldDidChangeSelection(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "so-dan_app/SignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "textFieldDidChangeSelection(_:)"
             landmarkType = "7">
          </BreakpointContent>
