@@ -10,7 +10,8 @@ import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import Firebase
 
 class LoginViewController: UIViewController {
-
+    
+    var activeTextField: UITextField?
     @IBOutlet weak var emailTextField: MDCOutlinedTextField!
     @IBOutlet weak var passwordTextField: MDCOutlinedTextField!
     @IBOutlet weak var loginBtn: UIButton!
@@ -31,6 +32,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
+        //textField下の文字初期化
+        emailTextField.trailingAssistiveLabel.text = ""
+        passwordTextField.trailingAssistiveLabel.text = ""
+        
+        //ボタンを押下した時にactiveなテキストフィールドからフォーカスを外す
+        if let _activeTextField = activeTextField {
+            _activeTextField.resignFirstResponder()
+        }
+        
         loginAction()
     }
     
@@ -56,6 +66,11 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    //activeなテキストフィールドを取得する
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
     }
 }
 
@@ -106,7 +121,25 @@ extension LoginViewController {
         guard let password = passwordTextField.text else { return }
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let _error = error {
-                print(_error.localizedDescription)
+                let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
+                let errorCode = AuthErrorCode(rawValue: _error._code)
+                switch errorCode {
+                case .invalidEmail:
+                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
+                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    //self.alert(title: "エラー", message: "入力したメールアドレスの形式が正しくありません。")
+                case .wrongPassword:
+                    self.passwordTextField.trailingAssistiveLabel.text = "※パスワードが間違っています。"
+                    self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    
+                case .userNotFound:
+                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスのユーザは存在しません。"
+                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                default:
+                    AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
+                    print(_error.localizedDescription as String)
+                }
+                return
             }
         
             let user = Auth.auth().currentUser

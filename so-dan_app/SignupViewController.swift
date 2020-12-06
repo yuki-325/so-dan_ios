@@ -11,7 +11,8 @@ import Firebase
 
 class SignupViewController: UIViewController{
     
-    var alertController: UIAlertController! //アラート用
+    //var activeTextField = UITextField()
+    var activeTextField: UITextField?
     @IBOutlet weak var emailTextField: MDCOutlinedTextField!
     @IBOutlet weak var passwordTextField: MDCOutlinedTextField!
     @IBOutlet weak var usernameTextField: MDCOutlinedTextField!
@@ -37,6 +38,16 @@ class SignupViewController: UIViewController{
     }
     
     @IBAction func signupBtnPressed(_ sender: UIButton) {
+        //textField下の文字初期化
+        emailTextField.trailingAssistiveLabel.text = ""
+        passwordTextField.trailingAssistiveLabel.text = ""
+        usernameTextField.trailingAssistiveLabel.text = ""
+        
+        //ボタンを押下した時にactiveなテキストフィールドからフォーカスを外す
+        if let _activeTextField = activeTextField {
+            _activeTextField.resignFirstResponder()
+        }
+        
         signupAction()
     }
 }
@@ -62,6 +73,11 @@ extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    //activeなテキストフィールドを取得する
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
     }
 }
 
@@ -113,16 +129,21 @@ extension SignupViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let _error = error {
-                //TODO:アラート作成 すでに使用されているemailがあるかパスワードが6文字以上でない可能性があります
-                switch _error.localizedDescription {
-                case "The email address is already in use by another account.":
-                    self.alert(title: "エラー", message: "入力したメールアドレスはすでに別のアカウントで使用されています")
-                case "The email address is badly formatted.":
-                    self.alert(title: "エラー", message: "入力したメールアドレスの形式が正しくありません。")
-                case "The password must be 6 characters long or more.":
-                    self.alert(title: "エラー", message: "パスワードは6文字以上である必要があります。")
+                let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
+                let errorCode = AuthErrorCode(rawValue: _error._code)
+                switch errorCode {
+                case .emailAlreadyInUse:
+                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスはすでに別のアカウントで使用されています"
+                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                case .invalidEmail:
+                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
+                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                case .weakPassword:
+                    self.passwordTextField.trailingAssistiveLabel.text = "※パスワードは6文字以上である必要があります。"
+                    self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
                 default:
-                    self.alert(title: "エラー", message: "予期せぬエラー")
+                    AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
+                    print(_error.localizedDescription as String)
                 }
                 return
             }
@@ -134,38 +155,26 @@ extension SignupViewController {
             userRef.setData(docData) { (error) in
                 if let _error = error {
                     print(_error.localizedDescription)
-                    self.alert(title: "エラー", message: "データベースの保存に失敗しました。")
+                    AlertAction.alert(title: "エラー", message: "データベースの保存に失敗しました。", viewController: self)
                     return
                 }
                 
                 userRef.getDocument { (snapShoe, error) in
                     if let _error = error {
                         print(_error.localizedDescription)
-                        self.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。")
+                        AlertAction.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。", viewController: self)
                         return
                     }
                     
                     let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ
-                    print(userData.email)
-                    
+                    //print("userData:\(userData.email)")
+                    AlertAction.alert(title: "登録完了", message: "アカウントの作成が完了しました。", viewController: self)
                 }
-                self.alert(title: "登録完了", message: "アカウントの作成が完了しました。")
             }
         }
     }
 }
 
-//MARK: - アラート ベース
-extension SignupViewController {
-    func alert(title:String, message:String) {
-        alertController = UIAlertController(title: title,
-                                            message: message,
-                                            preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK",
-                                                style: .default,
-                                                handler: nil))
-        present(alertController, animated: true)
-    }
-}
+
 
 
