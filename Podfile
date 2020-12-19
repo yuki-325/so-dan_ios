@@ -13,6 +13,8 @@ target 'so-dan_app' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'RAMAnimatedTabBarController'
+  pod 'UITextView+Placeholder'
 
   target 'so-dan_appTests' do
     inherit! :search_paths

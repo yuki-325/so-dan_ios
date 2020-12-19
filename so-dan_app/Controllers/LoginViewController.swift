@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  so-dan_app
 //
 //  Created by 中野勇貴 on 2020/11/18.
@@ -9,63 +9,57 @@ import UIKit
 import MaterialComponents.MaterialTextControls_OutlinedTextFields
 import Firebase
 
-class SignupViewController: UIViewController{
+class LoginViewController: UIViewController {
     
-    //var activeTextField = UITextField()
     var activeTextField: UITextField?
     @IBOutlet weak var emailTextField: MDCOutlinedTextField!
     @IBOutlet weak var passwordTextField: MDCOutlinedTextField!
-    @IBOutlet weak var usernameTextField: MDCOutlinedTextField!
-    @IBOutlet weak var signupBtn: UIButton!
-    
+    @IBOutlet weak var loginBtn: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        usernameTextField.delegate = self
+
         
-        emailTextField.label.text = "e-mail"
+        emailTextField.label.text = "email"
         passwordTextField.label.text = "password"
-        usernameTextField.label.text = "ユーザ名"
         emailTextField.clearButtonMode = .whileEditing
         passwordTextField.clearButtonMode = .whileEditing
-        usernameTextField.clearButtonMode = .whileEditing
-
-        signupBtn.layer.cornerRadius = signupBtn.frame.height / 2
-        signupBtn.isEnabled = false
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        loginBtn.layer.cornerRadius = loginBtn.frame.height / 2
+        loginBtn.isEnabled = false
         setUpNotificationForTextField()
     }
     
-    @IBAction func signupBtnPressed(_ sender: UIButton) {
+    @IBAction func loginBtnPressed(_ sender: UIButton) {
         //textField下の文字初期化
         emailTextField.trailingAssistiveLabel.text = ""
         passwordTextField.trailingAssistiveLabel.text = ""
-        usernameTextField.trailingAssistiveLabel.text = ""
         
         //ボタンを押下した時にactiveなテキストフィールドからフォーカスを外す
         if let _activeTextField = activeTextField {
             _activeTextField.resignFirstResponder()
         }
         
-        signupAction()
+        loginAction()
     }
+    
 }
 
-
 //MARK: - UITextFieldDelegate
-extension SignupViewController: UITextFieldDelegate {
+
+extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let emailIsEmpty = emailTextField.text?.isEmpty ?? true
         let passwordIsEmpty = passwordTextField.text?.isEmpty ?? true
-        let usernameIsEmpty = usernameTextField.text?.isEmpty ?? true
         
-        if !emailIsEmpty && !passwordIsEmpty && !usernameIsEmpty {
-            signupBtn.isEnabled = true
-            signupBtn.backgroundColor = UIColor.rgba(red: 66, green: 66, blue: 66, alpha: 1)
+        if !emailIsEmpty && !passwordIsEmpty {
+            loginBtn.isEnabled = true
+            loginBtn.backgroundColor = UIColor.rgba(red: 66, green: 66, blue: 66, alpha: 1)
         } else {
-            signupBtn.isEnabled = false
-            signupBtn.backgroundColor = UIColor.rgba(red: 145, green: 145, blue: 145, alpha: 1)
+            loginBtn.isEnabled = false
+            loginBtn.backgroundColor = UIColor.rgba(red: 145, green: 145, blue: 145, alpha: 1)
         }
     }
     
@@ -81,8 +75,9 @@ extension SignupViewController: UITextFieldDelegate {
     }
 }
 
-//MARK: - キーボード系の処理
-extension SignupViewController {
+
+//MARK: - キーボード系処置
+extension LoginViewController {
     func setUpNotificationForTextField() {
         let notificationCenter = NotificationCenter.default
         //キーボードが出る時に呼ばれる
@@ -97,7 +92,7 @@ extension SignupViewController {
     @objc func keyboardWillShow(_ notification: Notification) {
         let keyboardFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         guard let keyboardMinY = keyboardFrame?.minY else { return }
-        let registerBtnMaxY = signupBtn.frame.maxY
+        let registerBtnMaxY = loginBtn.frame.maxY
         let distance = registerBtnMaxY - keyboardMinY + 60
         let transform = CGAffineTransform(translationX: 0, y: -distance)
         
@@ -119,62 +114,42 @@ extension SignupViewController {
     }
 }
 
-//MARK: - sign up
-extension SignupViewController {
-    //サインアップ＆FireStoreにデータを保存
-    private func signupAction() {
+
+//MARK: - ログインの処理
+extension LoginViewController {
+    func loginAction() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
-        guard let username = usernameTextField.text else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let _error = error {
                 let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
                 let errorCode = AuthErrorCode(rawValue: _error._code)
                 switch errorCode {
-                case .emailAlreadyInUse:
-                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスはすでに別のアカウントで使用されています"
-                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
                 case .invalidEmail:
                     self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
                     self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
-                case .weakPassword:
-                    self.passwordTextField.trailingAssistiveLabel.text = "※パスワードは6文字以上である必要があります。"
+                    //self.alert(title: "エラー", message: "入力したメールアドレスの形式が正しくありません。")
+                case .wrongPassword:
+                    self.passwordTextField.trailingAssistiveLabel.text = "※パスワードが間違っています。"
                     self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    
+                case .userNotFound:
+                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスのユーザは存在しません。"
+                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
                 default:
                     AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
                     print(_error.localizedDescription as String)
                 }
                 return
             }
+        
+            let user = Auth.auth().currentUser
             
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            let docData = ["email": email, "username": username, "createdAt": Timestamp()] as [String: Any]
-            let userRef = Firestore.firestore().collection("users").document(uid)
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
             
-            userRef.setData(docData) { (error) in
-                if let _error = error {
-                    print(_error.localizedDescription)
-                    AlertAction.alert(title: "エラー", message: "データベースの保存に失敗しました。", viewController: self)
-                    return
-                }
-                
-                userRef.getDocument { (snapShoe, error) in
-                    if let _error = error {
-                        print(_error.localizedDescription)
-                        AlertAction.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。", viewController: self)
-                        return
-                    }
-                    
-                    let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ
-                    //print("userData:\(userData.email)")
-                    AlertAction.alert(title: "登録完了", message: "アカウントの作成が完了しました。", viewController: self)
-                }
-            }
+            //print(user?.email)
+            //self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            //print(result?.user.email)
         }
     }
 }
-
-
-
-

@@ -17,10 +17,15 @@
 		4F4A475425653D1C00F346E5 /* so_dan_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A475325653D1C00F346E5 /* so_dan_appUITests.swift */; };
 		4F4A479825655B0C00F346E5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A479725655B0C00F346E5 /* SignupViewController.swift */; };
 		4F4A479D25655B4100F346E5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4A479C25655B4100F346E5 /* LoginViewController.swift */; };
+		4F62D802258A2B540025DE36 /* ConsultationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62D800258A2B540025DE36 /* ConsultationCell.swift */; };
+		4F62D803258A2B540025DE36 /* ConsultationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F62D801258A2B540025DE36 /* ConsultationCell.xib */; };
 		4F64238E256B56CE00DD80DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */; };
 		4FCEFA632577B576007E0827 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA622577B576007E0827 /* UserModel.swift */; };
 		4FCEFA6B2577BF5B007E0827 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA6A2577BF5B007E0827 /* UIColorExtension.swift */; };
 		4FCEFA7325790C38007E0827 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA7225790C38007E0827 /* AlertAction.swift */; };
+		4FCEFA97257E50C2007E0827 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA96257E50C2007E0827 /* HomeViewController.swift */; };
+		4FCEFA9F257E50DB007E0827 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA9E257E50DB007E0827 /* SettingViewController.swift */; };
+		4FCEFAA4257E5123007E0827 /* AddConsultationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFAA3257E5123007E0827 /* AddConsultationViewController.swift */; };
 		7D2998740918F94514A0A367 /* Pods_so_dan_app_so_dan_appUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EEFCA59FD17F9E418D593C /* Pods_so_dan_app_so_dan_appUITests.framework */; };
 		7E818DEF13A9C692A4EDAD34 /* Pods_so_dan_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC9CFB2AC86E2318FC9D1FE7 /* Pods_so_dan_app.framework */; };
 		9E01C3A38AACA173E22DFED1 /* Pods_so_dan_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5862946821859AEBD92A00D8 /* Pods_so_dan_appTests.framework */; };
@@ -63,10 +68,15 @@
 		4F4A475525653D1C00F346E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F4A479725655B0C00F346E5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		4F4A479C25655B4100F346E5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4F62D800258A2B540025DE36 /* ConsultationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationCell.swift; sourceTree = "<group>"; };
+		4F62D801258A2B540025DE36 /* ConsultationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsultationCell.xib; sourceTree = "<group>"; };
 		4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4FCEFA622577B576007E0827 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4FCEFA6A2577BF5B007E0827 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		4FCEFA7225790C38007E0827 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		4FCEFA96257E50C2007E0827 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4FCEFA9E257E50DB007E0827 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		4FCEFAA3257E5123007E0827 /* AddConsultationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConsultationViewController.swift; sourceTree = "<group>"; };
 		5862946821859AEBD92A00D8 /* Pods_so_dan_appTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_so_dan_appTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6366CB97BE5A63274DFDFC04 /* Pods-so-dan_appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-so-dan_appTests.debug.xcconfig"; path = "Target Support Files/Pods-so-dan_appTests/Pods-so-dan_appTests.debug.xcconfig"; sourceTree = "<group>"; };
 		83EEFCA59FD17F9E418D593C /* Pods_so_dan_app_so_dan_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_so_dan_app_so_dan_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,15 +150,12 @@
 			children = (
 				4F4A473125653D1B00F346E5 /* AppDelegate.swift */,
 				4F4A473325653D1B00F346E5 /* SceneDelegate.swift */,
-				4FCEFA622577B576007E0827 /* UserModel.swift */,
+				4F62D7FC258A28300025DE36 /* Models */,
+				4F62D7FA258A27C50025DE36 /* Views */,
+				4F62D7FB258A27F40025DE36 /* Controllers */,
 				4FCEFA7225790C38007E0827 /* AlertAction.swift */,
 				4FCEFA6A2577BF5B007E0827 /* UIColorExtension.swift */,
-				4F4A473525653D1B00F346E5 /* InitialViewController.swift */,
-				4F4A479725655B0C00F346E5 /* SignupViewController.swift */,
-				4F4A479C25655B4100F346E5 /* LoginViewController.swift */,
-				4F4A473725653D1B00F346E5 /* Main.storyboard */,
 				4F4A473A25653D1C00F346E5 /* Assets.xcassets */,
-				4F4A473C25653D1C00F346E5 /* LaunchScreen.storyboard */,
 				4F4A473F25653D1C00F346E5 /* Info.plist */,
 				4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */,
 			);
@@ -171,6 +178,38 @@
 				4F4A475525653D1C00F346E5 /* Info.plist */,
 			);
 			path = "so-dan_appUITests";
+			sourceTree = "<group>";
+		};
+		4F62D7FA258A27C50025DE36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F4A473725653D1B00F346E5 /* Main.storyboard */,
+				4F62D800258A2B540025DE36 /* ConsultationCell.swift */,
+				4F4A473C25653D1C00F346E5 /* LaunchScreen.storyboard */,
+				4F62D801258A2B540025DE36 /* ConsultationCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F62D7FB258A27F40025DE36 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F4A473525653D1B00F346E5 /* InitialViewController.swift */,
+				4F4A479725655B0C00F346E5 /* SignupViewController.swift */,
+				4F4A479C25655B4100F346E5 /* LoginViewController.swift */,
+				4FCEFA96257E50C2007E0827 /* HomeViewController.swift */,
+				4FCEFAA3257E5123007E0827 /* AddConsultationViewController.swift */,
+				4FCEFA9E257E50DB007E0827 /* SettingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4F62D7FC258A28300025DE36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FCEFA622577B576007E0827 /* UserModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		784A481A2941A9B5B415F788 /* Pods */ = {
@@ -298,6 +337,7 @@
 				4F4A473B25653D1C00F346E5 /* Assets.xcassets in Resources */,
 				4F64238E256B56CE00DD80DF /* GoogleService-Info.plist in Resources */,
 				4F4A473925653D1B00F346E5 /* Main.storyboard in Resources */,
+				4F62D803258A2B540025DE36 /* ConsultationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,8 +470,12 @@
 				4FCEFA7325790C38007E0827 /* AlertAction.swift in Sources */,
 				4F4A479825655B0C00F346E5 /* SignupViewController.swift in Sources */,
 				4F4A473625653D1B00F346E5 /* InitialViewController.swift in Sources */,
+				4FCEFA9F257E50DB007E0827 /* SettingViewController.swift in Sources */,
+				4FCEFA97257E50C2007E0827 /* HomeViewController.swift in Sources */,
 				4F4A473225653D1B00F346E5 /* AppDelegate.swift in Sources */,
+				4F62D802258A2B540025DE36 /* ConsultationCell.swift in Sources */,
 				4FCEFA632577B576007E0827 /* UserModel.swift in Sources */,
+				4FCEFAA4257E5123007E0827 /* AddConsultationViewController.swift in Sources */,
 				4F4A473425653D1B00F346E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
