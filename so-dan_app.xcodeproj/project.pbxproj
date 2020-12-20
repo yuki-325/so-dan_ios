@@ -20,7 +20,8 @@
 		4F62D802258A2B540025DE36 /* ConsultationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62D800258A2B540025DE36 /* ConsultationCell.swift */; };
 		4F62D803258A2B540025DE36 /* ConsultationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F62D801258A2B540025DE36 /* ConsultationCell.xib */; };
 		4F64238E256B56CE00DD80DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */; };
-		4FCEFA632577B576007E0827 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA622577B576007E0827 /* UserModel.swift */; };
+		4F862647258F34BC00869FFD /* Consultation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F862646258F34BC00869FFD /* Consultation.swift */; };
+		4FCEFA632577B576007E0827 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA622577B576007E0827 /* User.swift */; };
 		4FCEFA6B2577BF5B007E0827 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA6A2577BF5B007E0827 /* UIColorExtension.swift */; };
 		4FCEFA7325790C38007E0827 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA7225790C38007E0827 /* AlertAction.swift */; };
 		4FCEFA97257E50C2007E0827 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCEFA96257E50C2007E0827 /* HomeViewController.swift */; };
@@ -71,7 +72,8 @@
 		4F62D800258A2B540025DE36 /* ConsultationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultationCell.swift; sourceTree = "<group>"; };
 		4F62D801258A2B540025DE36 /* ConsultationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConsultationCell.xib; sourceTree = "<group>"; };
 		4F64238D256B56CE00DD80DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4FCEFA622577B576007E0827 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4F862646258F34BC00869FFD /* Consultation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultation.swift; sourceTree = "<group>"; };
+		4FCEFA622577B576007E0827 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4FCEFA6A2577BF5B007E0827 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		4FCEFA7225790C38007E0827 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
 		4FCEFA96257E50C2007E0827 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -207,7 +209,8 @@
 		4F62D7FC258A28300025DE36 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4FCEFA622577B576007E0827 /* UserModel.swift */,
+				4FCEFA622577B576007E0827 /* User.swift */,
+				4F862646258F34BC00869FFD /* Consultation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,8 +477,9 @@
 				4FCEFA97257E50C2007E0827 /* HomeViewController.swift in Sources */,
 				4F4A473225653D1B00F346E5 /* AppDelegate.swift in Sources */,
 				4F62D802258A2B540025DE36 /* ConsultationCell.swift in Sources */,
-				4FCEFA632577B576007E0827 /* UserModel.swift in Sources */,
+				4FCEFA632577B576007E0827 /* User.swift in Sources */,
 				4FCEFAA4257E5123007E0827 /* AddConsultationViewController.swift in Sources */,
+				4F862647258F34BC00869FFD /* Consultation.swift in Sources */,
 				4F4A473425653D1B00F346E5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
