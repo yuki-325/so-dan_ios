@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingViewController: UIViewController {
 
@@ -14,6 +15,16 @@ class SettingViewController: UIViewController {
 
     }
     
-
+    @IBAction func logoutBtn(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            let initialVC = storyboard?.instantiateViewController(identifier: "initialView") as! InitialViewController
+            present(initialVC, animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            AlertAction.alert(title: "ログアウト失敗", message: "ログアウトに失敗しました。お手数ですが、管理人にお問い合わせください。", viewController: self)
+        }
+    }
+    
   
 }
