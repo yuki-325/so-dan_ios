@@ -167,14 +167,10 @@ extension SignupViewController {
                         return
                     }
                     
-                    let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ
+                    let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ(いらんかも)
                     //print("userData:\(userData.email)")
                     
-                    
-            
                     AlertAction.alert(title: "登録完了", message: "アカウントの作成が完了しました。", viewController: self)
-                    
-                    
                 }
             }
         }

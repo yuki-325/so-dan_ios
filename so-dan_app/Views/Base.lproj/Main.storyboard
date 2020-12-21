@@ -290,7 +290,6 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="相談タイトル" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zUw-Bv-FXC">
                                         <rect key="frame" x="0.0" y="0.0" width="254" height="34"/>
-                                        <color key="textColor" red="0.76851850749999995" green="0.76852935550000001" blue="0.77669745680000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -362,7 +361,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
-                        <outlet property="contentsTextView" destination="Bg6-fB-Spf" id="rKx-lR-7tF"/>
+                        <outlet property="contentTextView" destination="Bg6-fB-Spf" id="CCb-mz-eyW"/>
                         <outlet property="sendBtn" destination="1Fr-Ia-LAq" id="xSe-4B-kPa"/>
                         <outlet property="titleTextField" destination="zUw-Bv-FXC" id="cJe-Ae-y7d"/>
                     </connections>

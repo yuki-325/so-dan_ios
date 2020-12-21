@@ -6,38 +6,48 @@
 //
 
 import UIKit
+import Firebase
 import UITextView_Placeholder;
 
 class AddConsultationViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentsTextView: UITextView!
+    @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var sendBtn: UIButton!
+    let db = Firestore.firestore() //DBの参照
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(UIColor(cgColor: contentsTextView.layer.borderColor!))
         //print(titleTextField.layer.borderWidth)
-        contentsTextView.layer.borderWidth = 0.5
-        contentsTextView.layer.borderColor = UIColor.rgba(red: 204, green: 204, blue: 204, alpha: 1).cgColor
-        contentsTextView.layer.cornerRadius = 5
-        contentsTextView.placeholder = "相談したいことを入力してください。"
-        contentsTextView.placeholderColor = UIColor.rgba(red: 196, green: 196, blue: 196, alpha: 1)
+        contentTextView.layer.borderWidth = 0.5
+        contentTextView.layer.borderColor = UIColor.rgba(red: 204, green: 204, blue: 204, alpha: 1).cgColor
+        contentTextView.layer.cornerRadius = 5
+        contentTextView.placeholder = "相談したいことを入力してください。"
+        contentTextView.placeholderColor = UIColor.rgba(red: 196, green: 196, blue: 196, alpha: 1)
         sendBtn.isEnabled = false
         sendBtn.layer.cornerRadius = sendBtn.layer.frame.height / 2
         
-        contentsTextView.delegate = self
+        contentTextView.delegate = self
         titleTextField.delegate = self
         
         setUpNotificationForTextField()
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
-        print("text")
         //入力内容をDBに保存
-        
-        //チャット画面に移動(Viewの作成まだ)
+        if let title = titleTextField.text, let content = contentTextView.text, let senderEmail = Auth.auth().currentUser?.email {
+            let consultationData = ["title": title, "content": content, "senderEmail": senderEmail, "createdAt": Timestamp()] as [String : Any]
+            db.collection("consultations")
+                .addDocument(data: consultationData) { (error) in
+                    if let _error = error {
+                        print(_error.localizedDescription)
+                        AlertAction.alert(title: "エラー", message: "データの保存に失敗しました。", viewController: self)
+                    }
+                    //チャット画面に移動(Viewの作成まだ)
+                }
+        }
     }
     
 }
@@ -46,7 +56,7 @@ extension AddConsultationViewController: UITextFieldDelegate, UITextViewDelegate
     //titleTextField, contentsTextViewの入力判定メソッド
     func textInputJubgment() {
         let titleIsEmpty = titleTextField.text?.isEmpty ?? true
-        let contentsIsEmpty = contentsTextView.text?.isEmpty ?? true
+        let contentsIsEmpty = contentTextView.text?.isEmpty ?? true
         
         if !titleIsEmpty && !contentsIsEmpty {
             sendBtn.isEnabled = true
@@ -56,7 +66,7 @@ extension AddConsultationViewController: UITextFieldDelegate, UITextViewDelegate
             sendBtn.backgroundColor = UIColor.rgba(red: 145, green: 145, blue: 145, alpha: 1)
         }
     }
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textInputJubgment()
     }
@@ -75,7 +85,7 @@ extension AddConsultationViewController: UITextFieldDelegate, UITextViewDelegate
 
 //MARK: - キーボード系処置
 extension AddConsultationViewController {
-
+    
     func setUpNotificationForTextField() {
         let notificationCenter = NotificationCenter.default
         //キーボードが出る時に呼ばれる

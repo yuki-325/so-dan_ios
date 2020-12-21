@@ -120,6 +120,7 @@ extension LoginViewController {
     func loginAction() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let _error = error {
                 let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
@@ -142,9 +143,7 @@ extension LoginViewController {
                 }
                 return
             }
-        
-            let user = Auth.auth().currentUser
-            
+                    
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
             
             //print(user?.email)
