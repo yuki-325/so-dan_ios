@@ -36,19 +36,29 @@ class AddConsultationViewController: UIViewController {
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
+        
         //入力内容をDBに保存
         if let title = titleTextField.text, let content = contentTextView.text, let senderEmail = Auth.auth().currentUser?.email {
-            let consultationData = ["title": title, "content": content, "senderEmail": senderEmail, "createdAt": Timestamp()] as [String : Any]
-            db.collection("consultations")
+            let consultationData = ["title": title, "content": content, "senderEmail": senderEmail, "receiverEmail": "kanrinin@kanrinin.com", "createdAt": Timestamp()] as [String : Any]
+            
+            db.collection("conslutations")
                 .addDocument(data: consultationData) { (error) in
                     if let _error = error {
                         print(_error.localizedDescription)
                         AlertAction.alert(title: "エラー", message: "データの保存に失敗しました。", viewController: self)
                     }
-                    //チャット画面に移動(Viewの作成まだ)
                 }
         }
+        
+        //入力内容を初期化 (ボタン連打防止)
+        titleTextField.text = ""
+        contentTextView.text = ""
+        
+        //チャット画面に移動
+        
+        
     }
+
     
 }
 

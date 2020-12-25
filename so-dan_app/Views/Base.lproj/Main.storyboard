@@ -257,6 +257,7 @@
                         <outlet property="passwordTextField" destination="GPo-nh-PaV" id="BDn-JP-pux"/>
                         <outlet property="signupBtn" destination="xvt-bY-RT3" id="Th1-NO-ysP"/>
                         <outlet property="usernameTextField" destination="QbN-08-kc6" id="XSJ-iA-dFN"/>
+                        <segue destination="FX4-EO-zMH" kind="presentation" identifier="sginupSegue" id="0tc-ty-65Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhD-fR-c2s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -541,6 +542,9 @@
             <point key="canvasLocation" x="1611.5942028985507" y="618.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0tc-ty-65Y"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>

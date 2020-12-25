@@ -127,50 +127,59 @@ extension SignupViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let username = usernameTextField.text else { return }
+        let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if let _error = error {
-                let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
-                let errorCode = AuthErrorCode(rawValue: _error._code)
-                switch errorCode {
-                case .emailAlreadyInUse:
-                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスはすでに別のアカウントで使用されています"
-                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
-                case .invalidEmail:
-                    self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
-                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
-                case .weakPassword:
-                    self.passwordTextField.trailingAssistiveLabel.text = "※パスワードは6文字以上である必要があります。"
-                    self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
-                default:
-                    AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
-                    print(_error.localizedDescription as String)
-                }
-                return
-            }
-            
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            let docData = ["email": email, "username": username, "createdAt": Timestamp()] as [String: Any]
-            let userRef = Firestore.firestore().collection("users").document(uid)
-            
-            userRef.setData(docData) { (error) in
+        if username == "管理人" { //"管理人"という名前で他のユーザが登録できないようにする
+            usernameTextField.trailingAssistiveLabel.text = "その名前は使用できません。"
+            usernameTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+            return
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if let _error = error {
-                    print(_error.localizedDescription)
-                    AlertAction.alert(title: "エラー", message: "データベースの保存に失敗しました。", viewController: self)
+                    
+                    let errorCode = AuthErrorCode(rawValue: _error._code)
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスはすでに別のアカウントで使用されています"
+                        self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    case .invalidEmail:
+                        self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
+                        self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    case .weakPassword:
+                        self.passwordTextField.trailingAssistiveLabel.text = "※パスワードは6文字以上である必要があります。"
+                        self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    default:
+                        AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
+                        print(_error.localizedDescription as String)
+                    }
                     return
                 }
                 
-                userRef.getDocument { (snapShoe, error) in
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                let docData = ["email": email, "username": username, "createdAt": Timestamp()] as [String: Any]
+                let userRef = Firestore.firestore().collection("users").document(uid)
+                
+                userRef.setData(docData) { (error) in
                     if let _error = error {
                         print(_error.localizedDescription)
-                        AlertAction.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。", viewController: self)
+                        AlertAction.alert(title: "エラー", message: "データベースの保存に失敗しました。", viewController: self)
                         return
                     }
                     
-                    let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ(いらんかも)
-                    //print("userData:\(userData.email)")
+                    self.performSegue(withIdentifier: "sginupSegue", sender: nil)
                     
-                    AlertAction.alert(title: "登録完了", message: "アカウントの作成が完了しました。", viewController: self)
+//                    userRef.getDocument { (snapShoe, error) in //ここでユーザデータを取得する必要あるか？
+//                        if let _error = error {
+//                            print(_error.localizedDescription)
+//                            AlertAction.alert(title: "エラー", message: "ユーザ情報の取得に失敗しました。", viewController: self)
+//                            return
+//                        }
+//
+//                        let userData = User.init(dic: (snapShoe?.data())!) //取得したユーザ情報をUser型へ(いらんかも)
+//                        //print("userData:\(userData.email)")
+//
+//                        AlertAction.alert(title: "登録完了", message: "アカウントの作成が完了しました。", viewController: self)
+//                    }
                 }
             }
         }
