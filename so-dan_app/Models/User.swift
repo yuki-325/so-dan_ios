@@ -14,8 +14,8 @@ struct User {
     var createdAt: Timestamp
     
     init(dic: [String: Any]) {
-        self.email = dic["email"] as! String
-        self.username = dic["username"] as! String
-        self.createdAt = dic["createdAt"] as! Timestamp
+        self.email = dic[Constants.FStore.emailField] as! String
+        self.username = dic[Constants.FStore.usernameField] as! String
+        self.createdAt = dic[Constants.FStore.createdAtField] as! Timestamp
     }
 }

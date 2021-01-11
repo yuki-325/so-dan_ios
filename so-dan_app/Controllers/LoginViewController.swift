@@ -123,20 +123,20 @@ extension LoginViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let _error = error {
-                let errorTextColor = UIColor.rgba(red: 255, green: 0, blue: 0, alpha: 0.7) //テキストフィールド下に表示する文字のカラー
+                 //テキストフィールド下に表示する文字のカラー
                 let errorCode = AuthErrorCode(rawValue: _error._code)
                 switch errorCode {
                 case .invalidEmail:
                     self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスの形式が正しくありません。"
-                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    self.emailTextField.setTrailingAssistiveLabelColor(Constants.errorTextColor, for: .normal)
                     //self.alert(title: "エラー", message: "入力したメールアドレスの形式が正しくありません。")
                 case .wrongPassword:
                     self.passwordTextField.trailingAssistiveLabel.text = "※パスワードが間違っています。"
-                    self.passwordTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    self.passwordTextField.setTrailingAssistiveLabelColor(Constants.errorTextColor, for: .normal)
                     
                 case .userNotFound:
                     self.emailTextField.trailingAssistiveLabel.text = "※入力したメールアドレスのユーザは存在しません。"
-                    self.emailTextField.setTrailingAssistiveLabelColor(errorTextColor, for: .normal)
+                    self.emailTextField.setTrailingAssistiveLabelColor(Constants.errorTextColor, for: .normal)
                 default:
                     AlertAction.alert(title: "エラー", message: "予期せぬエラー", viewController: self)
                     print(_error.localizedDescription as String)
@@ -144,7 +144,7 @@ extension LoginViewController {
                 return
             }
                     
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            self.performSegue(withIdentifier: Constants.loginSegueIdentifier, sender: nil)
             
             //print(user?.email)
             //self.performSegue(withIdentifier: "loginSegue", sender: nil)

@@ -257,7 +257,7 @@
                         <outlet property="passwordTextField" destination="GPo-nh-PaV" id="BDn-JP-pux"/>
                         <outlet property="signupBtn" destination="xvt-bY-RT3" id="Th1-NO-ysP"/>
                         <outlet property="usernameTextField" destination="QbN-08-kc6" id="XSJ-iA-dFN"/>
-                        <segue destination="FX4-EO-zMH" kind="presentation" identifier="sginupSegue" id="0tc-ty-65Y"/>
+                        <segue destination="FX4-EO-zMH" kind="presentation" identifier="signupSegue" id="0tc-ty-65Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhD-fR-c2s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -403,9 +403,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C7G-6u-DyL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="C7G-6u-DyL">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1ZY-lG-6dN"/>
@@ -435,7 +435,7 @@
                         </connections>
                     </tabBarItem>
                     <connections>
-                        <outlet property="tableView" destination="C7G-6u-DyL" id="orf-hF-EGV"/>
+                        <outlet property="consultationTableView" destination="C7G-6u-DyL" id="orf-hF-EGV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbd-rj-TfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -452,6 +452,71 @@
             </objects>
             <point key="canvasLocation" x="2566.666666666667" y="-518.30357142857144"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="RGR-xW-hbQ">
+            <objects>
+                <viewController id="gpY-Hu-Vag" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sT2-JV-WID">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KT1-aG-85n">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIv-7O-f93">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <color key="backgroundColor" red="0.25879135730000002" green="0.25884211060000001" blue="0.25878816840000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="3rS-PQ-4Y2"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GLL-Gi-5nu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wbl-vG-Ybr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="相談タイトル" id="Dvd-zS-adv">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="bmK-fD-cef">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4O9-nL-2jT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wbl-vG-Ybr" firstAttribute="top" secondItem="KT1-aG-85n" secondAttribute="bottom" id="7S2-nC-Swb"/>
+                            <constraint firstItem="Wbl-vG-Ybr" firstAttribute="leading" secondItem="JIv-7O-f93" secondAttribute="leading" id="CEw-pz-m7Y"/>
+                            <constraint firstItem="JIv-7O-f93" firstAttribute="trailing" secondItem="4O9-nL-2jT" secondAttribute="trailing" id="G03-fg-lo8"/>
+                            <constraint firstItem="JIv-7O-f93" firstAttribute="top" secondItem="GLL-Gi-5nu" secondAttribute="bottom" id="Hz6-59-XCt"/>
+                            <constraint firstAttribute="bottom" secondItem="JIv-7O-f93" secondAttribute="bottom" id="Kze-M2-WM3"/>
+                            <constraint firstItem="KT1-aG-85n" firstAttribute="leading" secondItem="Wbl-vG-Ybr" secondAttribute="leading" id="V5O-N1-Fa3"/>
+                            <constraint firstItem="KT1-aG-85n" firstAttribute="top" secondItem="sT2-JV-WID" secondAttribute="top" id="WnU-ky-GUX"/>
+                            <constraint firstItem="GLL-Gi-5nu" firstAttribute="leading" secondItem="4O9-nL-2jT" secondAttribute="leading" id="Yok-qO-ICL"/>
+                            <constraint firstItem="KT1-aG-85n" firstAttribute="trailing" secondItem="Wbl-vG-Ybr" secondAttribute="trailing" id="emF-h3-1ci"/>
+                            <constraint firstItem="JIv-7O-f93" firstAttribute="leading" secondItem="4O9-nL-2jT" secondAttribute="leading" id="gda-PW-9W0"/>
+                            <constraint firstItem="JIv-7O-f93" firstAttribute="trailing" secondItem="4O9-nL-2jT" secondAttribute="trailing" id="gpF-Js-vg9"/>
+                            <constraint firstItem="JIv-7O-f93" firstAttribute="leading" secondItem="4O9-nL-2jT" secondAttribute="leading" id="p3I-Qp-h8f"/>
+                            <constraint firstItem="GLL-Gi-5nu" firstAttribute="trailing" secondItem="4O9-nL-2jT" secondAttribute="trailing" id="vcW-cI-Fd6"/>
+                            <constraint firstAttribute="bottom" secondItem="JIv-7O-f93" secondAttribute="bottom" id="vlZ-nL-PqU"/>
+                            <constraint firstItem="GLL-Gi-5nu" firstAttribute="top" secondItem="Wbl-vG-Ybr" secondAttribute="bottom" id="y6X-4a-AoS"/>
+                            <constraint firstItem="Wbl-vG-Ybr" firstAttribute="top" secondItem="4O9-nL-2jT" secondAttribute="top" id="yGu-tY-jCL"/>
+                            <constraint firstItem="Wbl-vG-Ybr" firstAttribute="trailing" secondItem="JIv-7O-f93" secondAttribute="trailing" id="zLV-DH-oBJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48C-FQ-xs8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="-110"/>
+        </scene>
         <!--Animated Tab Bar Controller-->
         <scene sceneID="sgJ-Fc-EB8">
             <objects>
@@ -461,7 +526,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="3t3-yi-BjO" kind="relationship" relationship="viewControllers" id="EjM-Wu-020"/>
